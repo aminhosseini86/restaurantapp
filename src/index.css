@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@import "./assets/font/iranSans/css/fontiran.css";
+
+@theme inline {
+  --spacing-22: calc(var(--spacing) * 22.5);
+
+  --font-iranSans: IRANSans;
+
+  --color-grayBg: #f4f4f4;
+  --color-p-red: #f33b40;
+}
+
+@utility container {
+  @apply mx-auto;
+}
+
+@layer base {
+  * {
+    @apply font-iranSans m-0 box-border border-0 border-none p-0 font-normal outline-0;
+  }
+
+  #root,
+  body {
+    @apply m-0 w-full p-0;
+  }
+  body {
+    @apply bg-grayBg;
+  }
+}
