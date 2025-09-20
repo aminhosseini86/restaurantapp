@@ -1,4 +1,4 @@
-import AllFoods from "@/components/allFoods";
+import AllFoods from "@/components/appComps/allFoods";
 
 export function AllFoodsPage() {
   return <AllFoods />;

@@ -1,4 +1,5 @@
 import image from "@/assets/image/logo.png";
+import Button from "@/components/ui/button";
 import clsx from "clsx";
 import { Home, ListCheck } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
@@ -22,8 +23,7 @@ export default function NavBar() {
   return (
     <nav
       className={clsx(
-        "my-8 flex h-24 w-full content-center items-center justify-between rounded-2xl bg-white p-2.5 px-5 select-none",
-        // "border-2 border-solid border-gray-200/70",
+        "my-10 flex h-24 w-full content-center items-center justify-between rounded-2xl bg-white p-2.5 px-5 select-none",
       )}
     >
       <div className="flex content-center items-center gap-4">
@@ -49,7 +49,9 @@ export default function NavBar() {
         </>
       </div>
 
-      <div>3</div>
+      <div>
+        <Button> ثبت نام | ورود</Button>
+      </div>
     </nav>
   );
 }
