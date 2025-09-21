@@ -36,6 +36,7 @@ export default function NavBar() {
             const Icon = items.icon;
             return (
               <NavLink
+                key={items.id}
                 to={items.path}
                 className={({ isActive }) =>
                   `flex content-center items-center gap-1.5 text-center ${isActive ? "text-p-red !font-bold" : "text-gray-500"}`

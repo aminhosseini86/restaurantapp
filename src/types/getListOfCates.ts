@@ -1,3 +1,5 @@
+import { AxiosError } from "axios";
+
 export interface Color {
   id: number;
   code: string;
@@ -8,7 +10,7 @@ export interface Variety {
   title: string;
   price: string;
   quantity: string;
-  is_available: string; // "0" یا "1"
+  is_available: "0" | "1";
   product_variety_type_id: string;
 }
 
@@ -47,4 +49,13 @@ export interface FoodsApiResponse {
   token: string;
   message: string;
   data: Category[];
+}
+
+export interface CategoryListProps {
+  loading: boolean;
+  isError: boolean;
+  error: AxiosError<any> | null;
+  data: Category[];
+  selected: Category | null;
+  handleSelected: (data: Category) => void;
 }

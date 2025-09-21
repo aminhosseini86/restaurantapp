@@ -1,39 +1,36 @@
-import clsx from "clsx";
-import { useState } from "react";
+import { useGetFoodCates } from "@/hooks/";
+import { Category } from "@/types/getListOfCates";
+import { useEffect, useState } from "react";
 import Header from "./header";
+import CategoryList from "./categoryList";
 
 function Home() {
-  const [selectedId, setSelectedId] = useState(1);
+  const [selected, setSelected] = useState<Category | null>(null);
 
-  const handleSelected = (id: number) => {
-    setSelectedId(id);
+  const handleSelected = (data: Category) => {
+    setSelected(data);
   };
+  const { data, isError, isPending, isLoading, error } = useGetFoodCates();
 
-  //   const { data } = useGetFoodCates();
+  useEffect(() => {
+    if (data) {
+      setSelected(data.data[0]);
+    }
+  }, [data]);
 
   return (
     <>
       <Header />
 
-      <div className="flex w-full content-center items-center gap-8 overflow-auto scroll-smooth pt-3 pb-6">
-        {Array.from({ length: 20 }).map((_, index) => {
-          return (
-            <div
-              className={clsx(
-                "rounded-4px h-32 w-[110px] shrink-0 cursor-pointer p-4 outline-[6px] outline-solid",
-                "flex flex-wrap content-center items-center justify-center",
-                {
-                  "bg-p-red/20 outline-p-red/20 border-2 border-dashed border-black":
-                    index === selectedId,
-                  "bg-white outline-white": index !== selectedId,
-                },
-              )}
-              onClick={() => handleSelected(index)}
-            >
-              {index}
-            </div>
-          );
-        })}
+      <div className="flex w-full content-center items-center justify-center gap-5 overflow-auto scroll-smooth px-5 pt-3 pb-6">
+        <CategoryList
+          data={data?.data || []}
+          error={error}
+          handleSelected={handleSelected}
+          isError={isError}
+          loading={isPending || isLoading}
+          selected={selected}
+        />
       </div>
     </>
   );

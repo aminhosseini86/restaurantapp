@@ -32,7 +32,8 @@
       "@/utils": ["./src/utils/*"],
       "@/router": ["./src/router/*"],
       "@/types": ["./src/types/*"],
-      "@/layouts": ["./src/layouts/*"]
+      "@/layouts": ["./src/layouts/*"],
+      "@/lib": ["./src/lib/*"]
     }
   },
   "include": ["src"]
