@@ -18,7 +18,7 @@ export default function CategoryList({
           return (
             <Skeleton
               key={index}
-              className="rounded-4px h-32 w-[110px] shrink-0 bg-gray-200"
+              className="rounded-4px h-32 w-[110px] shrink-0"
             />
           );
         })}

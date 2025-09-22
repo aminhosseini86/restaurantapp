@@ -167,3 +167,12 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
+
+@layer components {
+  .title-head {
+    @apply relative h-5 grow before:absolute before:top-1/2 before:w-full before:-translate-y-1/2 before:border-dashed before:border-b-black/80;
+  }
+  .title-head::before {
+    border-bottom-width: 2.8px;
+  }
+}
