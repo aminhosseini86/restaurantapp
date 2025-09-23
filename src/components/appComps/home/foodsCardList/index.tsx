@@ -4,7 +4,7 @@ import { FoodCardListProps } from "@/types/FoodCardList";
 function FoodCardList({ loading }: FoodCardListProps) {
   if (loading)
     <>
-      {Array.from({ length: 5 }).map((_, index) => {
+      {Array.from({ length: 5 }).map(() => {
         return (
           <div className="rounded-8px flex gap-4 bg-white px-5 py-4">
             <Skeleton className="size-[120px]" />
