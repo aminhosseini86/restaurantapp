@@ -78,7 +78,7 @@ function Home() {
 
       <div className="my-10 grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {foods.length > 0 && (
-          <div>
+          <>
             {foods.map((item) => {
               return (
                 <div
@@ -106,7 +106,7 @@ function Home() {
                 </div>
               );
             })}
-          </div>
+          </>
         )}
       </div>
     </>

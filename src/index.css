@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "./assets/font/iranSans/css/fontiran.css";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
