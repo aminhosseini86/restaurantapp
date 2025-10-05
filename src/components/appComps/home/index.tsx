@@ -5,6 +5,7 @@ import { Category } from "@/types/getListOfCates";
 import { useEffect, useMemo, useState } from "react";
 import CategoryList from "./categoryList";
 import Header from "./header";
+import FoodCardList from "./foodsCardList";
 
 function Home() {
   const [selected, setSelected] = useState<Category | null>(null);
@@ -51,7 +52,7 @@ function Home() {
     <>
       <Header />
 
-      <div className="flex w-full content-center items-center gap-5 overflow-auto scroll-smooth px-5 pt-3 pb-6">
+      <div className="flex w-full content-center items-center gap-5 overflow-auto scroll-smooth px-5 pt-3 pb-6 lg:justify-center">
         <CategoryList
           data={data?.data || []}
           error={error}
@@ -77,37 +78,7 @@ function Home() {
       </div>
 
       <div className="my-10 grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {foods.length > 0 && (
-          <>
-            {foods.map((item) => {
-              return (
-                <div
-                  key={item.key}
-                  className="rounded-8px flex flex-wrap gap-4 bg-white px-5 py-4"
-                >
-                  <img src={item.image} className="rounded-8px size-[120px]" />
-                  <div className="space-y-4">
-                    <h3 className="font-bold">{item.title}</h3>
-                    <p>{item.description}</p>
-                  </div>
-
-                  <div className="h-0.5 w-full bg-gray-200"></div>
-                  <div className="flex w-full justify-end">
-                    <p>
-                      {item.price === 0 ? (
-                        "قیمت نامشخص"
-                      ) : (
-                        <>
-                          {item.price} <span>تومان</span>
-                        </>
-                      )}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </>
-        )}
+        <FoodCardList list={foods} loading={isPending || isLoading} />
       </div>
     </>
   );
