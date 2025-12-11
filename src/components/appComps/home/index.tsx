@@ -1,11 +1,11 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGetFoodCates } from "@/hooks/";
-import { FoodCard } from "@/types/FoodCardList";
+import { In_FoodCard } from "@/types/FoodCardList";
 import { Category } from "@/types/getListOfCates";
 import { useEffect, useMemo, useState } from "react";
 import CategoryList from "./categoryList";
-import Header from "./header";
 import FoodCardList from "./foodsCardList";
+import Header from "./header/header";
 
 function Home() {
   const [selected, setSelected] = useState<Category | null>(null);
@@ -16,8 +16,8 @@ function Home() {
 
   const { data, isError, isPending, isLoading, error } = useGetFoodCates();
 
-  const foods: FoodCard[] = useMemo(() => {
-    const allFoods: FoodCard[] = [];
+  const foods: In_FoodCard[] = useMemo(() => {
+    const allFoods: In_FoodCard[] = [];
 
     selected?.products.forEach((item) => {
       item.product_defines.forEach((it) => {
@@ -44,7 +44,9 @@ function Home() {
 
   useEffect(() => {
     if (data) {
-      setSelected(data.data[0]);
+      if (data.data) {
+        setSelected(data.data[0]);
+      }
     }
   }, [data]);
 

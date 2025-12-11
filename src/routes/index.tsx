@@ -2,6 +2,7 @@ import { AllFoodsPage } from "@/page/allFoods.page";
 import { CommonAppEntryPage } from "@/page/commonAppEntry.page";
 import HomePage from "@/page/home.page";
 import HomeLayoutPage from "@/page/homeLayout.page";
+import RandomPage from "@/page/randomPage";
 import { createBrowserRouter } from "react-router-dom";
 
 export const allRoutes = createBrowserRouter([
@@ -24,5 +25,9 @@ export const allRoutes = createBrowserRouter([
   {
     path: "allfoods",
     element: <AllFoodsPage />,
+  },
+  {
+    path: "random",
+    element: <RandomPage />,
   },
 ]);

@@ -65,14 +65,6 @@
   * {
     @apply font-iranSans m-0 box-border border-0 border-none p-0 outline-0 transition-all;
   }
-
-  #root,
-  body {
-    @apply m-0 w-full p-0;
-  }
-  body {
-    @apply bg-grayBg;
-  }
 }
 
 ::-webkit-scrollbar {
@@ -173,5 +165,9 @@
   }
   .title-head::before {
     border-bottom-width: 2.8px;
+  }
+
+  .body-no-scroll {
+    @apply overflow-hidden;
   }
 }
