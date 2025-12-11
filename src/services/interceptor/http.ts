@@ -24,13 +24,17 @@ http.interceptors.request.use(
 
 http.interceptors.response.use(
   (response: AxiosResponse<In_ApiRes<unknown>>) => {
-    // if (response.data.token) localStorage.setItem("jwt", response.data.token);
+    const code = response?.data?.code;
 
-    if (response && response.data.code >= 200 && response.data.code <= 299) {
-      return response;
-    } else {
-      return Promise.reject(response);
+    if (code >= 400 && code <= 599) {
+      return Promise.reject({
+        message: response.data.message || "خطا رخ داده است",
+        code,
+        data: response.data.data,
+      });
     }
+
+    return response;
   },
   (error: AxiosError<any>) => {
     return Promise.reject(error);

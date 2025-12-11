@@ -33,7 +33,7 @@ export default function Header() {
           "my-10 w-full overflow-hidden rounded-3xl",
           "h-[150px] sm:h-[180px] md:h-[280px] lg:h-[360px] xl:h-[440px] 2xl:h-[480px]",
         )}
-        style={{ clipPath: "ellipse(100% 100% at 50% 0%)" }}
+        // style={{ clipPath: "ellipse(100% 100% at 50% 0%)" }}
       >
         <Slider data={data.data.slider} />
       </header>
