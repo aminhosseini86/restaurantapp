@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import CategoryList from "./categoryList";
 import FoodCardList from "./foodsCardList";
 import Header from "./header/header";
+import { TorangApp } from "./torangApp/torangApp";
 
 function Home() {
   const [selected, setSelected] = useState<Category | null>(null);
@@ -81,6 +82,10 @@ function Home() {
 
       <div className="my-10 grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         <FoodCardList list={foods} loading={isPending || isLoading} />
+      </div>
+
+      <div>
+        <TorangApp />
       </div>
     </>
   );

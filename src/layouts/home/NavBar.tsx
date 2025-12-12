@@ -1,6 +1,6 @@
 import image from "@/assets/image/logo.png";
 import clsx from "clsx";
-import { Home, ListCheck } from "lucide-react";
+import { GalleryThumbnails, Home, ListCheck, ShoppingCart } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 import LoginDialog from "./loginDialog";
 import Profile from "./profile";
@@ -21,6 +21,18 @@ export default function NavBar() {
       icon: ListCheck,
       title: "سفارشات",
     },
+    {
+      id: 3,
+      path: "/gallery",
+      icon: GalleryThumbnails,
+      title: "گالری تصاویر",
+    },
+    {
+      id: 4,
+      path: "/cart",
+      icon: ShoppingCart,
+      title: "سبد خرید",
+    },
   ];
 
   return (
@@ -33,7 +45,7 @@ export default function NavBar() {
         <img src={image} alt="logo" className="size-14" />
       </Link>
 
-      <div className="flex grow-1 content-center items-center gap-3 md:grow-0">
+      <div className="flex grow-1 content-center items-center gap-5 md:grow-0">
         {menuItems.map((items) => {
           const Icon = items.icon;
           return (
@@ -41,7 +53,7 @@ export default function NavBar() {
               key={items.id}
               to={items.path}
               className={({ isActive }) =>
-                `flex content-center items-center gap-1.5 text-center ${isActive ? "text-p-red !font-bold" : "text-gray-500"}`
+                `flex flex-col content-center items-center gap-2 text-center ${isActive ? "text-p-red !font-bold" : "text-gray-500"}`
               }
             >
               <Icon className="mx-auto size-5" />
