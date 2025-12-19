@@ -1,4 +1,5 @@
 import { AllFoodsPage } from "@/page/allFoods.page";
+import { CartPage } from "@/page/cart.page";
 import { CommonAppEntryPage } from "@/page/commonAppEntry.page";
 import HomePage from "@/page/home.page";
 import HomeLayoutPage from "@/page/homeLayout.page";
@@ -18,12 +19,16 @@ export const allRoutes = createBrowserRouter([
             index: true,
             element: <HomePage />,
           },
+          {
+            path: "/cart",
+            element: <CartPage />,
+          },
         ],
       },
     ],
   },
   {
-    path: "allfoods",
+    path: "all-foods",
     element: <AllFoodsPage />,
   },
   {
