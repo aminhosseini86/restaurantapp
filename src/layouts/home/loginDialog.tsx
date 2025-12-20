@@ -174,7 +174,11 @@ function ConfirmOtp({
             localStorage.setItem("jwt", data.data.api_token);
           }
 
-          setTimeout(() => setOpen(false), 300);
+          setTimeout(() => {
+            setOpen(false);
+            searchParams.delete("phone");
+            setSearchParams({});
+          }, 300);
         },
         onError() {
           showSuccess("خطایی رخ داده اصت.");
@@ -204,6 +208,7 @@ function ConfirmOtp({
           <X className="size-4 cursor-pointer" />
         </DialogClose>
       </DialogHeader>
+
       <div className="w-full">
         <Field>
           <FieldLabel

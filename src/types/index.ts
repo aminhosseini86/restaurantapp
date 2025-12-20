@@ -13,3 +13,9 @@ export interface In_ApiRes<T> {
   message: string | null;
   data: T;
 }
+
+export interface selectedItem {
+  id: number;
+  name: string;
+  description?: string;
+}

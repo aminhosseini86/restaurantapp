@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import Button from "./button";
 
-function FoodCard({ item }: In_FoodCardProps) {
+function FoodCard({ item, handleOpen, handleSelectedRow }: In_FoodCardProps) {
   const [quantityStock, setQuantityStock] = useState(0);
 
   const quantityChange = (action: "add" | "minus") => {
@@ -102,7 +102,14 @@ function FoodCard({ item }: In_FoodCardProps) {
               "flex content-center items-center justify-center !p-2.5",
             )}
             disabled={item.quantity === 0 || quantityStock === item.quantity}
-            onClick={() => quantityChange("add")}
+            onClick={() => {
+              // quantityChange("add");
+              handleSelectedRow({
+                id: item.key,
+                name: item.title,
+              });
+              handleOpen(true);
+            }}
           >
             <Plus className="size-5" />
           </Button>

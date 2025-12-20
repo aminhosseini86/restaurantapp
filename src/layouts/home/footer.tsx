@@ -1,18 +1,18 @@
 import eNamad1 from "@/assets/image/e-namad1.png";
 import eNamad2 from "@/assets/image/e-namad2.png";
 import logo from "@/assets/image/logo.png";
-import { Clock, Copyright, MailOpen, MapPin, Phone } from "lucide-react";
+import { AlertBox } from "@/components/ui/alertBox";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useGetSlider } from "@/hooks/useGetSlider";
+import { faToEnDigits } from "@/utils/faToEnDigits";
+import { formatPhone } from "@/utils/formatPhone";
 import {
   IconBrandInstagram,
   IconBrandLinkedin,
   IconBrandTelegram,
   IconBrandWhatsapp,
 } from "@tabler/icons-react";
-import { useGetSlider } from "@/hooks/useGetSlider";
-import { AlertBox } from "@/components/ui/alertBox";
-import { Skeleton } from "@/components/ui/skeleton";
-import { faToEnDigits } from "@/utils/faToEnDigits";
-import { formatPhone } from "@/utils/formatPhone";
+import { Clock, Copyright, MailOpen, MapPin, Phone } from "lucide-react";
 
 function Footer() {
   const { data, isLoading, isPending, isError, error } = useGetSlider();
@@ -25,9 +25,6 @@ function Footer() {
         {data?.message || error?.response?.data.message || "خطایی رخ داده است."}
       </AlertBox>
     );
-  }
-  {
-    /* <a href="whatsapp://send?abid=phonenumber&text=Hello%2C%20World!">Send Message</a> */
   }
 
   if (data && data.code >= 200 && data.code <= 299) {

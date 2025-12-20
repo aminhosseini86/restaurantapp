@@ -1,4 +1,4 @@
-function TorangApp() {
+function PoloApp() {
   return (
     <div className="my-10 flex h-[500px] content-center items-center justify-center">
       <div className="rounded-16px bg-p-red text-wh relative h-[250px] w-full p-20 text-white">
@@ -21,4 +21,4 @@ function TorangApp() {
   );
 }
 
-export { TorangApp };
+export { PoloApp };

@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import CategoryList from "./categoryList";
 import FoodCardList from "./foodsCardList";
 import Header from "./header/header";
-import { TorangApp } from "./torangApp/torangApp";
+import { PoloApp } from "./PoloApp/PoloApp";
 
 function Home() {
   const [selected, setSelected] = useState<Category | null>(null);
@@ -23,7 +23,7 @@ function Home() {
     selected?.products.forEach((item) => {
       item.product_defines.forEach((it) => {
         allFoods.push({
-          key: it.product_define_id,
+          key: it.varieties[0].id || it.product_define_id,
           title: it.name,
           image: it.image,
           description: it.description,
@@ -66,7 +66,10 @@ function Home() {
         />
       </div>
 
-      <div className="mt-10 flex w-full content-center items-center gap-5">
+      <div
+        className="mt-10 flex w-full content-center items-center gap-5"
+        id="menu"
+      >
         {isPending || isLoading ? (
           <Skeleton className="h-4 w-full" />
         ) : (
@@ -85,7 +88,7 @@ function Home() {
       </div>
 
       <div>
-        <TorangApp />
+        <PoloApp />
       </div>
     </>
   );

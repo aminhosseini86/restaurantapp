@@ -1,8 +1,7 @@
-import useRegister from "@/hooks/useRegister";
 import { Outlet } from "react-router-dom";
 
 function CommonAppEntryPage() {
-  useRegister();
+  // useRegister();
 
   return (
     <div className="container">

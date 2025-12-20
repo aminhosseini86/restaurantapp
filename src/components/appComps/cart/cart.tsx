@@ -1,3 +1,4 @@
+import { useGetNotCompletedCart } from "@/hooks/cart";
 import { CartList } from "./cartList";
 import { CartNoFood } from "./cartNoFood";
 
@@ -6,6 +7,7 @@ const cartList = [
 ];
 
 function Cart() {
+  useGetNotCompletedCart();
   if (cartList.length === 0) {
     return <CartNoFood />;
   }
