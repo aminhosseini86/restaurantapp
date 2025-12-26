@@ -1,39 +1,46 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import tempFoodImage from "@/assets/image/temp-food.png";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Button from "@/components/ui/button";
-function CartList() {
-  const cartList = [
-    {
-      id: 2,
-      name: "کباب برگ ممتاز",
-      quantity: 2,
-      unitPrice: 285000,
-      img: "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659",
-    },
-    {
-      id: 3,
-      name: "جوجه کباب سلطانی",
-      quantity: 1,
-      unitPrice: 320000,
-      img: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90",
-    },
-    {
-      id: 4,
-      name: "چلو ماهیچه عالی",
-      quantity: 3,
-      unitPrice: 195000,
-      img: "https://images.unsplash.com/photo-1563379091339-03246963d9d6",
-    },
-  ];
+import ConfirmAlert from "@/components/ui/ConfirmAlert";
+import { In_CartDetailItem } from "@/types/cart";
+import { X } from "lucide-react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
-  const total = cartList.reduce(
-    (sum, item) => sum + item.quantity * item.unitPrice,
-    0,
-  );
+function CartList({ data }: { data: In_CartDetailItem[] }) {
+  const total = data.reduce((sum, item) => sum + item.price_info.price, 0);
+  const { id } = useParams();
+
+  const [selectedRow, setSelectedRow] = useState<{
+    name: string;
+    varity_id: string;
+  } | null>(null);
+
+  const handleSelectedRow = (id: string, name: string) => {
+    setSelectedRow({ name: name, varity_id: id });
+  };
+
+  const [open, setOpen] = useState<boolean>(false);
+  const handleOpenAlert = (o: boolean) => {
+    setOpen(o);
+  };
+
+  const handleDeleteRow = () => {};
 
   return (
     <div className="space-y-10">
-      <h2 className="text-2xl font-bold">سبد خرید شما</h2>
+      {open && (
+        <ConfirmAlert
+          open={open}
+          pending={false}
+          setOpen={handleOpenAlert}
+          title={`حذف آیتم ${selectedRow?.name} از سبد خرید شماره ${id}`}
+          approveHandler={handleDeleteRow}
+        />
+      )}
+
+      <h2 className="text-2xl font-bold"> جزئیات سبد خرید شماره {id} </h2>
+
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-9">
         <div className="col-span-1 overflow-x-auto lg:col-span-6">
           <table className="w-max border-separate border-spacing-y-5 sm:w-full">
@@ -47,19 +54,31 @@ function CartList() {
             </thead>
 
             <tbody>
-              {cartList.map((item) => (
+              {data.map((item) => (
                 <tr key={item.id} className="*:bg-white *:hover:cursor-pointer">
                   <td className="rounded-r-12px p-4">
                     <div className="flex h-full content-center items-center gap-6">
+                      <Button
+                        className="rounded-full p-1!"
+                        variant="ghost"
+                        onClick={() => {
+                          handleSelectedRow(item.id, item.name);
+                          handleOpenAlert(true);
+                        }}
+                      >
+                        <X className="size-4" />
+                      </Button>
+
                       <Avatar className="size-[60px] rounded-sm lg:size-[90px]">
                         <AvatarImage
-                          src={item.img}
+                          src={item.image}
                           className="size-full object-cover"
                         />
                         <AvatarFallback className="size-full object-cover">
                           <img src={tempFoodImage} />
                         </AvatarFallback>
                       </Avatar>
+
                       <p className="font-lg font-semibold">{item.name}</p>
                     </div>
                   </td>
@@ -67,8 +86,8 @@ function CartList() {
                   <td>
                     <div className="flex h-full content-center items-center">
                       <span className="font-light">
-                        {item.unitPrice.toLocaleString()}{" "}
-                      </span>{" "}
+                        {Number(item.original_price).toLocaleString()}{" "}
+                      </span>
                       <svg
                         className="ms-3"
                         width="25"
@@ -86,12 +105,12 @@ function CartList() {
                     </div>
                   </td>
 
-                  <td className="text-center lg:text-start">{item.quantity}</td>
+                  <td className="text-center lg:text-start">{item.count}</td>
 
                   <td className="rounded-l-12px px-2">
                     <div className="flex h-full content-center items-center">
                       <span className="font-light">
-                        {(item.quantity * item.unitPrice).toLocaleString()}{" "}
+                        {Number(item.price_info.price).toLocaleString()}
                       </span>{" "}
                       <svg
                         className="ms-3"

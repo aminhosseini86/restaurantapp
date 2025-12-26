@@ -1,7 +1,11 @@
-import Cart from "@/components/appComps/cart/cart";
+import { Outlet } from "react-router-dom";
 
 function CartPage() {
-  return <Cart />;
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 }
 
 export { CartPage };

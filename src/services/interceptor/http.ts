@@ -9,10 +9,13 @@ const http = axios.create({
 
 http.interceptors.request.use(
   (config) => {
+    // let myToken = localStorage.getItem("jwt");
+
     // if (!myToken || myToken === "null") {
     let myToken =
       "$2y$12$XkZr2ko0b5wpPp5vLQQfAum8fcLjil0Pq/FjeZJb7gRh2d9mOfw0W";
     // }
+
     config.headers.Authorization = myToken;
 
     return config;

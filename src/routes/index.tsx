@@ -1,3 +1,5 @@
+import CartsLists from "@/components/appComps/cart/cart";
+import CartDetail from "@/components/appComps/cart/cartDetail/CartDetail";
 import { AllFoodsPage } from "@/page/allFoods.page";
 import { CartPage } from "@/page/cart.page";
 import { CommonAppEntryPage } from "@/page/commonAppEntry.page";
@@ -23,6 +25,16 @@ export const allRoutes = createBrowserRouter([
           {
             path: "/cart",
             element: <CartPage />,
+            children: [
+              {
+                index: true,
+                element: <CartsLists />,
+              },
+              {
+                path: ":id",
+                element: <CartDetail />,
+              },
+            ],
           },
           {
             path: "profile",

@@ -1,7 +1,18 @@
-import { addToCart, getNotCompletedCart } from "@/services/api/cart";
+import {
+  addToCart,
+  getCartInfo,
+  getNotCompletedCart,
+} from "@/services/api/cart";
 import { In_ApiRes } from "@/types/";
-import { In_AddToCartBody, In_AddToCartRes } from "@/types/cart";
+import {
+  Cart,
+  In_AddToCartBody,
+  In_AddToCartRes,
+  In_CartDetailItem,
+  In_CartInfoBody,
+} from "@/types/cart";
 import { useMutation, useQuery } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 
 export function useAddToCart() {
   return useMutation<
@@ -14,8 +25,15 @@ export function useAddToCart() {
 }
 
 export function useGetNotCompletedCart() {
-  return useQuery<In_ApiRes<any>, In_ApiRes<null>>({
+  return useQuery<In_ApiRes<Cart[]>, AxiosError<In_ApiRes<null>>>({
     queryKey: ["getNotCompletedCart"],
     queryFn: getNotCompletedCart,
+  });
+}
+
+export function useGetCartInfo(body: In_CartInfoBody) {
+  return useQuery<In_ApiRes<In_CartDetailItem[]>, AxiosError<In_ApiRes<null>>>({
+    queryKey: ["useGetCartInfo", body],
+    queryFn: () => getCartInfo(body),
   });
 }

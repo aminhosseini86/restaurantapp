@@ -26,7 +26,7 @@ function AddToCartAlertBox({
   const addToCart = useAddToCart();
 
   const [count, setCount] = useState(1);
-  const cart_id = localStorage.getItem("cart_id");
+  const [cart_id, setCartId] = useState<string | null>(null);
 
   const handleAdd = () => {
     addToCart.mutate(
@@ -38,7 +38,9 @@ function AddToCartAlertBox({
       {
         onSuccess(data) {
           showSuccess(data.message);
-          localStorage.setItem("cart_id", data.data.cart_id.toString());
+          if (!cart_id) {
+            setCartId(data.data.cart_id.toString());
+          }
         },
 
         onError(error) {
