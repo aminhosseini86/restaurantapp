@@ -12,6 +12,11 @@ function FoodCardList({ loading, list }: FoodCardListProps) {
   };
 
   const [selectedRow, setSelectedRow] = useState<selectedItem | null>(null);
+  const [quantity, setQuantity] = useState<number | null>(null);
+
+  const handleAddQuantity = (q: number) => {
+    setQuantity(q);
+  };
 
   const handleSelectedRow = (data: selectedItem | null) => {
     setSelectedRow(data);
@@ -38,6 +43,7 @@ function FoodCardList({ loading, list }: FoodCardListProps) {
     <>
       {selectedRow && (
         <AddToCartAlertBox
+          quantity={quantity!}
           data={selectedRow}
           open={openAlert}
           handleOpen={handleOpenAlert}
@@ -48,6 +54,7 @@ function FoodCardList({ loading, list }: FoodCardListProps) {
         <>
           {list.map((item) => (
             <FoodCard
+              handleAddQuantity={handleAddQuantity}
               key={item.key}
               item={item}
               handleOpen={handleOpenAlert}

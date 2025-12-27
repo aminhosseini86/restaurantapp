@@ -1,15 +1,31 @@
 import { AlertBox } from "@/components/ui/alertBox";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGetCartInfo } from "@/hooks/cart";
-import { useParams } from "react-router-dom";
-import { CartList } from "./cartList";
+import { setSessionStorage } from "@/services/storages";
+import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { CartDetailSteps } from "./steps";
 
 function CartDetail() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
   const { data, isLoading, isError, isPending, error } = useGetCartInfo({
     cart_id: Number(id),
   });
+
+  useEffect(() => {
+    if (error) {
+      setSessionStorage<number>("cartStepId", 1);
+    }
+  }, [error]);
+
+  useEffect(() => {
+    if (data && data?.data.length < 1) {
+      setSessionStorage<number>("cartStepId", 1);
+      navigate("/");
+    }
+  }, [data]);
 
   if (isLoading || isPending) {
     return <CartDetailSkeleton />;
@@ -29,7 +45,7 @@ function CartDetail() {
   }
 
   if (data && data.data.length > 0) {
-    return <CartList data={data.data} />;
+    return <CartDetailSteps />;
   }
 
   return <> </>;

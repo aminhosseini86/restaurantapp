@@ -6,7 +6,12 @@ import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import Button from "./button";
 
-function FoodCard({ item, handleOpen, handleSelectedRow }: In_FoodCardProps) {
+function FoodCard({
+  item,
+  handleOpen,
+  handleSelectedRow,
+  handleAddQuantity,
+}: In_FoodCardProps) {
   const [quantityStock, setQuantityStock] = useState(0);
 
   const quantityChange = (action: "add" | "minus") => {
@@ -103,11 +108,11 @@ function FoodCard({ item, handleOpen, handleSelectedRow }: In_FoodCardProps) {
             )}
             disabled={item.quantity === 0 || quantityStock === item.quantity}
             onClick={() => {
-              // quantityChange("add");
               handleSelectedRow({
                 id: item.key,
                 name: item.title,
               });
+              handleAddQuantity(item.quantity);
               handleOpen(true);
             }}
           >

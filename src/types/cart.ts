@@ -78,3 +78,12 @@ export interface In_CartDetailItem {
 export interface In_CartInfoBody {
   cart_id: number;
 }
+
+export interface In_RemoveFromCartBody {
+  cart_id: number;
+  variety_id: number;
+}
+
+export interface In_RemoveCartBody {
+  cart_id: number;
+}

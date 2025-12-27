@@ -19,4 +19,5 @@ export interface In_FoodCardProps {
   handleOpen: (open: boolean) => void;
   handleSelectedRow: (data: selectedItem | null) => void;
   item: In_FoodCard;
+  handleAddQuantity: (q: number) => void;
 }

@@ -1,7 +1,9 @@
 import {
   addToCart,
+  deleteItemFromCart,
   getCartInfo,
   getNotCompletedCart,
+  removeCart,
 } from "@/services/api/cart";
 import { In_ApiRes } from "@/types/";
 import {
@@ -10,6 +12,8 @@ import {
   In_AddToCartRes,
   In_CartDetailItem,
   In_CartInfoBody,
+  In_RemoveCartBody,
+  In_RemoveFromCartBody,
 } from "@/types/cart";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
@@ -35,5 +39,25 @@ export function useGetCartInfo(body: In_CartInfoBody) {
   return useQuery<In_ApiRes<In_CartDetailItem[]>, AxiosError<In_ApiRes<null>>>({
     queryKey: ["useGetCartInfo", body],
     queryFn: () => getCartInfo(body),
+  });
+}
+
+export function useDeleteItemFromCart() {
+  return useMutation<
+    In_ApiRes<"">,
+    AxiosError<In_ApiRes<null>>,
+    In_RemoveFromCartBody
+  >({
+    mutationFn: deleteItemFromCart,
+  });
+}
+
+export function useRemoveCart() {
+  return useMutation<
+    In_ApiRes<"">,
+    AxiosError<In_ApiRes<null>>,
+    In_RemoveCartBody
+  >({
+    mutationFn: removeCart,
   });
 }
