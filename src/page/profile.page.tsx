@@ -1,5 +1,7 @@
+import Profile from "@/components/appComps/home/profile";
+
 function ProfilePage() {
-  return <div>profile.page</div>;
+  return <Profile />;
 }
 
 export { ProfilePage };

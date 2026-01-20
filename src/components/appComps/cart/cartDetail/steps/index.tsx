@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { EditAbleCartList } from "./EditAbleCartList/EditAbleCartList";
 import { getFromSessionStorage, setSessionStorage } from "@/services/storages";
+import { AnswerExamQuestions } from "./exam/answerExamQuestions";
 
 interface In_StepContext {
   currentStep: string;
@@ -26,7 +27,7 @@ function CartDetailSteps() {
     },
     {
       id: "2",
-      comp: <div>ssd</div>,
+      comp: <AnswerExamQuestions />,
     },
   ];
 

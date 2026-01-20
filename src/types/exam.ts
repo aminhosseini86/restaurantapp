@@ -114,3 +114,7 @@ export enum In_Exam_QuestionTypeEnum {
 export type In_Exam_QuestionTypeMap = {
   [key in In_Exam_QuestionTypeEnum]: string;
 };
+
+export interface In_ExamFormFieldsProps {
+  question: In_Exam_Question;
+}

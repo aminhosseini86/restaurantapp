@@ -3,7 +3,8 @@ import clsx from "clsx";
 import { GalleryThumbnails, Home, ListCheck, ShoppingCart } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 import LoginDialog from "./loginDialog";
-import Profile from "./profile";
+import ProfileAvatar from "./profile";
+import ResponsiveMenuDrawer from "./responsiveMenuDrawer";
 
 export default function NavBar() {
   const jwtValue = localStorage.getItem("jwt");
@@ -38,14 +39,20 @@ export default function NavBar() {
   return (
     <nav
       className={clsx(
-        "my-10 flex h-24 w-full content-center items-center justify-between rounded-2xl bg-white p-2.5 px-5 select-none",
+        "my-5 flex w-full content-center items-center justify-between rounded-2xl bg-white p-2.5 px-5 select-none md:my-10 md:h-24",
       )}
     >
-      <Link to="/" className="hidden md:block">
-        <img src={image} alt="logo" className="size-14" />
-      </Link>
+      <div className="flex content-center items-center gap-4">
+        <Link to="/" className="md:block">
+          <img src={image} alt="logo" className="size-10 md:size-14" />
+        </Link>
 
-      <div className="flex grow-1 content-center items-center gap-5 md:grow-0">
+        <div className="block md:hidden">
+          <ResponsiveMenuDrawer />
+        </div>
+      </div>
+
+      <div className="hidden grow-1 content-center items-center gap-5 md:flex md:grow-0">
         {menuItems.map((items) => {
           const Icon = items.icon;
           return (
@@ -63,7 +70,7 @@ export default function NavBar() {
         })}
       </div>
 
-      {jwtValue ? <Profile /> : <LoginDialog />}
+      {jwtValue ? <ProfileAvatar /> : <LoginDialog />}
     </nav>
   );
 }

@@ -48,7 +48,7 @@ function CartDetail() {
     return <CartDetailSteps />;
   }
 
-  return <> </>;
+  return <></>;
 }
 
 function CartDetailSkeleton() {

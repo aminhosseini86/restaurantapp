@@ -1,5 +1,6 @@
 import CartsLists from "@/components/appComps/cart/cart";
-import CartDetail from "@/components/appComps/cart/cartDetail/CartDetail";
+import CartDetail from "@/components/appComps/cart/cartDetail/cartDetail";
+import { AnswerExamQuestions } from "@/components/appComps/cart/cartDetail/steps/exam/answerExamQuestions";
 import { AllFoodsPage } from "@/page/allFoods.page";
 import { CartPage } from "@/page/cart.page";
 import { CommonAppEntryPage } from "@/page/commonAppEntry.page";
@@ -39,6 +40,10 @@ export const allRoutes = createBrowserRouter([
           {
             path: "profile",
             element: <ProfilePage />,
+          },
+          {
+            path: "/exam",
+            element: <AnswerExamQuestions />,
           },
         ],
       },
