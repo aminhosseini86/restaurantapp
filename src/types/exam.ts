@@ -117,4 +117,15 @@ export type In_Exam_QuestionTypeMap = {
 
 export interface In_ExamFormFieldsProps {
   question: In_Exam_Question;
+  index: number;
+}
+
+export interface In_ExamFormFieldsMultiAnswerProps {
+  question: In_Exam_Question;
+}
+
+export interface In_ExamFormDataSchema {
+  question_id: string;
+  type: string;
+  value: string | string[];
 }

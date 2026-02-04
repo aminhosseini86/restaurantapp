@@ -6,45 +6,45 @@ import LoginDialog from "./loginDialog";
 import ProfileAvatar from "./profile";
 import ResponsiveMenuDrawer from "./responsiveMenuDrawer";
 
+export const menuItems = [
+  {
+    id: 1,
+    path: "/",
+    icon: Home,
+    title: "خانه",
+  },
+  {
+    id: 2,
+    path: "/orders",
+    icon: ListCheck,
+    title: "سفارشات",
+  },
+  {
+    id: 3,
+    path: "/gallery",
+    icon: GalleryThumbnails,
+    title: "گالری تصاویر",
+  },
+  {
+    id: 4,
+    path: "/cart",
+    icon: ShoppingCart,
+    title: "سبد خرید",
+  },
+];
+
 export default function NavBar() {
   const jwtValue = localStorage.getItem("jwt");
-
-  const menuItems = [
-    {
-      id: 1,
-      path: "/",
-      icon: Home,
-      title: "خانه",
-    },
-    {
-      id: 2,
-      path: "/orders",
-      icon: ListCheck,
-      title: "سفارشات",
-    },
-    {
-      id: 3,
-      path: "/gallery",
-      icon: GalleryThumbnails,
-      title: "گالری تصاویر",
-    },
-    {
-      id: 4,
-      path: "/cart",
-      icon: ShoppingCart,
-      title: "سبد خرید",
-    },
-  ];
 
   return (
     <nav
       className={clsx(
-        "my-5 flex w-full content-center items-center justify-between rounded-2xl bg-white p-2.5 px-5 select-none md:my-10 md:h-24",
+        "my-5 flex h-16 w-full content-center items-center justify-between rounded-2xl bg-white p-2.5 px-5 select-none md:my-10 md:h-24",
       )}
     >
-      <div className="flex content-center items-center gap-4">
+      <div className="flex content-center items-center gap-2">
         <Link to="/" className="md:block">
-          <img src={image} alt="logo" className="size-10 md:size-14" />
+          <img src={image} alt="logo" className="size-9 md:size-14" />
         </Link>
 
         <div className="block md:hidden">

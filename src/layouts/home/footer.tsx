@@ -224,7 +224,6 @@ function FooterSkeleton() {
             </ul>
           </div>
 
-          {/* Contact column */}
           <div className="col-span-2 space-y-4 lg:col-span-4">
             <Skeleton className="h-6 w-40" />
 
@@ -252,15 +251,7 @@ function FooterSkeleton() {
       </footer>
 
       <div className="mb-5 flex w-full items-center justify-between rounded-2xl bg-white p-5">
-        <div className="flex items-center gap-2 text-black/65">
-          <Skeleton className="h-4 w-[280px]" />
-        </div>
-
-        <div className="flex items-center gap-3 text-[28px]">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <Skeleton key={i} className="h-7 w-7 rounded-full" />
-          ))}
-        </div>
+        <Skeleton className="h-4 w-[280px]" />
       </div>
     </>
   );

@@ -63,7 +63,9 @@ function AddToCartAlertBox({
       },
       {
         onSuccess(data) {
-          showSuccess(data.message);
+          showSuccess(
+            data.message || "غدا مورد نظر به سبد خرید اضافه شده است.",
+          );
           if (!cart_id) {
             setCartId(data.data.cart_id.toString());
           }

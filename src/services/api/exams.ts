@@ -12,3 +12,12 @@ export async function getListOfBeforePayQuestions(): Promise<
     throw error;
   }
 }
+
+export async function postExamData(body: FormData): Promise<In_ApiRes<"">> {
+  try {
+    const { data } = await http.post("/exam/133", body);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}

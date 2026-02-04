@@ -7,7 +7,7 @@ function ProfileAvatar() {
   return (
     <div>
       <Avatar
-        className="size-12 cursor-pointer"
+        className="size-9 cursor-pointer md:size-12"
         onClick={() => {
           navigate("/profile");
         }}
