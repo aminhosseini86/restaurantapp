@@ -1,7 +1,6 @@
 import CartsLists from "@/components/appComps/cart/cart";
 import CartDetail from "@/components/appComps/cart/cartDetail/cartDetail";
-import Address from "@/components/appComps/cart/cartDetail/steps/address";
-import { AnswerExamQuestions } from "@/components/appComps/cart/cartDetail/steps/exam/answerExamQuestions";
+import { Address } from "@/components/appComps/cart/cartDetail/steps/address";
 import { AllFoodsPage } from "@/page/allFoods.page";
 import { CartPage } from "@/page/cart.page";
 import { CommonAppEntryPage } from "@/page/commonAppEntry.page";

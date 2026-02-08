@@ -109,8 +109,12 @@ function QuestionList() {
           })}
         </div>
         <div className="flex content-center items-center">
-          <Button type="submit" className="w-full md:w-[100px]">
-            ثبت
+          <Button
+            type="submit"
+            className="w-full md:w-[100px]"
+            disabled={postExam.isPending}
+          >
+            {postExam.isPending ? " درحال ثبت سوالات ..." : "ثبت سوالات"}
           </Button>
         </div>
       </form>

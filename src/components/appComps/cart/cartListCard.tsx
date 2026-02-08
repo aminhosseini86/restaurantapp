@@ -59,7 +59,8 @@ function CartListCard({ data }: { data: Cart[] }) {
       )}
 
       <h2 className="text-lg font-bold">لیست سبد های خرید شما </h2>
-      <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+
+      <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
         {data.map((item) => {
           return (
             <div className="rounded-8px col-span-1 flex content-center items-center justify-between bg-white px-4 py-3">

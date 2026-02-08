@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { EditAbleCartList } from "./EditAbleCartList/EditAbleCartList";
 import { getFromSessionStorage, setSessionStorage } from "@/services/storages";
 import { AnswerExamQuestions } from "./exam/answerExamQuestions";
-import Address from "./address";
+import { Address } from "./address";
 
 interface In_StepContext {
   currentStep: string;

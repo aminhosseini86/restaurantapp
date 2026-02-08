@@ -23,7 +23,8 @@ function Home() {
     selected?.products.forEach((item) => {
       item.product_defines.forEach((it) => {
         allFoods.push({
-          key: it.varieties[0].id || it.product_define_id,
+          key:
+            it.varieties.length > 0 ? it.varieties[0].id : it.product_define_id,
           title: it.name,
           image: it.image,
           description: it.description,
