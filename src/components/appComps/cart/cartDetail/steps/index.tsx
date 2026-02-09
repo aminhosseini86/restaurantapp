@@ -1,46 +1,36 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { EditAbleCartList } from "./EditAbleCartList/EditAbleCartList";
-import { getFromSessionStorage, setSessionStorage } from "@/services/storages";
-import { AnswerExamQuestions } from "./exam/answerExamQuestions";
+import { createContext, useContext, useState } from "react";
 import { Address } from "./address";
+import { EditAbleCartList } from "./EditAbleCartList/EditAbleCartList";
+import { AnswerExamQuestions } from "./exam/answerExamQuestions";
 
 interface In_StepContext {
-  currentStep: string;
-  handleSetCurrentStep: (s: string) => void;
+  currentStep: number;
+  handleSetCurrentStep: (s: number) => void;
 }
 
 const StepContext = createContext<null | In_StepContext>(null);
 
 function CartDetailSteps() {
-  const step = getFromSessionStorage("cartStepId");
+  const [currentStep, setCurrentStep] = useState(1);
 
-  const [currentStep, setCurrentStep] = useState(step || "1");
-
-  const handleSetCurrentStep = (s: string) => {
+  const handleSetCurrentStep = (s: number) => {
     setCurrentStep(s);
-    setSessionStorage<string>("cartStepId", s);
   };
 
   const stepsList = [
     {
-      id: "1",
+      id: 1,
       comp: <EditAbleCartList />,
     },
     {
-      id: "2",
+      id: 2,
       comp: <AnswerExamQuestions />,
     },
     {
-      id: "3",
+      id: 3,
       comp: <Address />,
     },
   ];
-
-  useEffect(() => {
-    if (!step) {
-      setSessionStorage<number>("cartStepId", 1);
-    }
-  }, []);
 
   return (
     <StepContext.Provider value={{ currentStep, handleSetCurrentStep }}>

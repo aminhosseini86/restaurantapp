@@ -27,6 +27,14 @@ function CartDetail() {
     }
   }, [data]);
 
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        navigate("/cart");
+      }, 3000);
+    }
+  }, [error, isError]);
+
   if (isLoading || isPending) {
     return <CartDetailSkeleton />;
   }
@@ -44,9 +52,7 @@ function CartDetail() {
     );
   }
 
-  if (data && data.data.length > 0) {
-    return <CartDetailSteps />;
-  }
+  if (data && data.data.length > 0) return <CartDetailSteps />;
 
   return <></>;
 }

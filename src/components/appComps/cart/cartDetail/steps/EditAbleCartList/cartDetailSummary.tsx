@@ -104,7 +104,7 @@ function CartDetailSummary({ total }: { total: number }) {
         <Button
           className="w-full"
           disabled={!isRulesChecked}
-          onClick={() => handleSetCurrentStep("2")}
+          onClick={() => handleSetCurrentStep(2)}
         >
           ادامه روند پرداخت
         </Button>

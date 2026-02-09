@@ -39,6 +39,7 @@ export function useGetCartInfo(body: In_CartInfoBody) {
   return useQuery<In_ApiRes<In_CartDetailItem[]>, AxiosError<In_ApiRes<null>>>({
     queryKey: ["useGetCartInfo", body],
     queryFn: () => getCartInfo(body),
+    refetchInterval: 3 * 60 * 1000,
   });
 }
 

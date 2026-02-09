@@ -59,7 +59,7 @@ function QuestionList() {
     postExam.mutate(formData, {
       onSuccess(data) {
         showSuccess(data.message);
-        handleSetCurrentStep("3");
+        handleSetCurrentStep(3);
       },
 
       onError(err) {
